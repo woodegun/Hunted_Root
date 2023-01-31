@@ -8,12 +8,12 @@ public class PlayerController : MonoBehaviour
 
     //Движение
     private CharacterController _controller;
-    private Vector3 _playerVelocity;
     private const float PlayerSpeed = 5.0f;
-    private const float GravityValue = -9.81f;
+    private const float TurnSmoothTime = 0.1f;
+    private float _turnSmoothVelocity;
 
     //Ускорение
-    private float _accelerationSpeed = 0;
+    private float _accelerationSpeed;
     private const float AccelerationMaxSpeed = 4;
     private const float AccelerationMaxStamina = 5; //запас ускорения
     private float _accelerationStamina = 5;
@@ -22,11 +22,15 @@ public class PlayerController : MonoBehaviour
     //Закапывание
     [SerializeField] private Slider digInKdSlider;
     private const float DigInKdMax = 20; //кд для закапывания
-    private float _currentDigInKd = 0;
+    private float _currentDigInKd;
 
+    //Камера
+    public Transform cam;
+    
     private void Start()
     {
-        _controller = gameObject.AddComponent<CharacterController>();
+        _controller = gameObject.GetComponent<CharacterController>();
+        cam = FindObjectOfType<Camera>().transform;
     }
 
     void Update()
@@ -104,15 +108,20 @@ public class PlayerController : MonoBehaviour
 
     private void Movement()
     {
-        Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-        _controller.Move(move * Time.deltaTime * (PlayerSpeed + _accelerationSpeed));
+        float horizontal = Input.GetAxisRaw("Horizontal");
+        float vertical = Input.GetAxisRaw("Vertical");
+        Vector3 direction = new Vector3(horizontal, 0, vertical).normalized;
 
-        if (move != Vector3.zero)
+        if (direction.magnitude >= 0.1f)
         {
-            gameObject.transform.forward = move;
-        }
+            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+            float angel = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref _turnSmoothVelocity,
+                TurnSmoothTime);
+            transform.rotation = Quaternion.Euler(0f, angel, 0f);
 
-        _playerVelocity.y += GravityValue * Time.deltaTime;
-        _controller.Move(_playerVelocity * Time.deltaTime);
+            Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+            _controller.Move(moveDir.normalized * Time.deltaTime * (PlayerSpeed + _accelerationSpeed));
+        }
     }
+
 }
