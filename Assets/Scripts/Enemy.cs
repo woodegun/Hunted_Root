@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -10,12 +11,13 @@ public class Enemy : MonoBehaviour
     private NavMeshAgent _navMeshAgent;
     private Transform _player;
     private Transform _target;
+    private Transform _noise;
     private bool _moveToTarget;
 
     private const float VisibilityRangeMin = 30f;
     private const float AdditionalVisibilityRange = 10f;
     private float _currentVisibilityRange = 30f;
-    private float _hearingRange = 90f;
+    private float _hearingRange = 100f;
 
     private void Awake()
     {
@@ -29,9 +31,20 @@ public class Enemy : MonoBehaviour
         _target = _nextPatrolPoint;
     }
 
+    private void OnEnable()
+    {
+        Stick.onBranchCrunches += SetNoise;
+    }
+
+    private void OnDisable()
+    {
+        Stick.onBranchCrunches -= SetNoise;
+    }
+
     private void FixedUpdate()
     {
         HuntPlayer();
+        HuntNoise();
         Patrol();
         if (_target != null)
         {
@@ -52,10 +65,25 @@ public class Enemy : MonoBehaviour
             LetPlayerGo();
         }
     }
+    
+    private void HuntNoise()
+    {
+        if (_target == _player || _noise == null)
+        {
+            return;
+        }
+        _target = _noise;
+        float distanceToNoise = GetDistanceTo(_noise);
+        if (distanceToNoise <= 1)
+        {
+            _noise = null;
+            _target = _nextPatrolPoint;
+        }
+    }
 
     private void Patrol()
     {
-        if (_target == _player)
+        if (_target == _player || _target == _noise)
         {
             return;
         }
@@ -104,5 +132,14 @@ public class Enemy : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, _currentVisibilityRange);
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, _hearingRange);
+    }
+
+    private void SetNoise(Transform _noise)
+    {
+        float distanceToNoise = GetDistanceTo(_noise);
+        if (distanceToNoise <= _hearingRange)
+        {
+            this._noise = _noise;
+        }
     }
 }
