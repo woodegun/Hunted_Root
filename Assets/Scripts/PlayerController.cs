@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour
 {
     //Состояние
-    private PlayerState _playerState = PlayerState.OnTheGround;
+    public PlayerState _playerState = PlayerState.OnTheGround;
 
     //Движение
     private CharacterController _controller;
@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
                 Movement();
                 DigIn();
                 break;
-            case PlayerState.InTheGround:
+            case PlayerState.UnderTheGround:
                 DigOut();
                 break;
             case PlayerState.Dead:
@@ -59,7 +59,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && _currentDigInKd <= 0)
         {
-            _playerState = PlayerState.InTheGround;
+            _playerState = PlayerState.UnderTheGround;
             _currentDigInKd = DigInKdMax;
         }
 

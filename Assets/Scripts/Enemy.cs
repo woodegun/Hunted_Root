@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
 
     private NavMeshAgent _navMeshAgent;
     private Transform _player;
+    private PlayerController _playerController;
     private Transform _target;
     private Transform _noise;
     private bool _moveToTarget;
@@ -27,6 +28,7 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         _player = FindObjectOfType<PlayerController>().transform;
+        _playerController = _player.GetComponent<PlayerController>();
         _nextPatrolPoint = PatrolPoints[_nextPatrolPointIndex];
         _target = _nextPatrolPoint;
     }
@@ -55,12 +57,12 @@ public class Enemy : MonoBehaviour
     private void HuntPlayer()
     {
         float distanceToPlayer = GetDistanceTo(_player);
-        if (distanceToPlayer <= _currentVisibilityRange && _target != _player)
+        if (_playerController._playerState != PlayerState.UnderTheGround && distanceToPlayer <= _currentVisibilityRange && _target != _player)
         {
             CapturePlayer();
         }
 
-        if (distanceToPlayer > _currentVisibilityRange && _target == _player)
+        if (_playerController._playerState == PlayerState.UnderTheGround || distanceToPlayer > _currentVisibilityRange && _target == _player)
         {
             LetPlayerGo();
         }
@@ -142,4 +144,6 @@ public class Enemy : MonoBehaviour
             this._noise = _noise;
         }
     }
+    
+    
 }

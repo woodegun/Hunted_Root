@@ -11,7 +11,7 @@ public class Stick : MonoBehaviour
         if (other.GetComponent<PlayerController>() != null)
         {
             Debug.Log("Хруст");
-            if (onBranchCrunches != null) onBranchCrunches(transform);
+            onBranchCrunches?.Invoke(transform);
         }
     }
 }
