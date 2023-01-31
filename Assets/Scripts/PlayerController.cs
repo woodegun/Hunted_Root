@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
 
     //Камера
     private Transform _camera;
-    
+
     private void Start()
     {
         _controller = gameObject.GetComponent<CharacterController>();
@@ -122,6 +122,7 @@ public class PlayerController : MonoBehaviour
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             _controller.Move(moveDir.normalized * Time.deltaTime * (PlayerSpeed + _accelerationSpeed));
         }
-    }
 
+        _controller.Move(Vector3.down * Time.deltaTime * 3);
+    }
 }
