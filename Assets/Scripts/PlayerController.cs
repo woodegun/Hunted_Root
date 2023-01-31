@@ -25,12 +25,12 @@ public class PlayerController : MonoBehaviour
     private float _currentDigInKd;
 
     //Камера
-    public Transform cam;
+    private Transform _camera;
     
     private void Start()
     {
         _controller = gameObject.GetComponent<CharacterController>();
-        cam = FindObjectOfType<Camera>().transform;
+        _camera = FindObjectOfType<Camera>().transform;
     }
 
     void Update()
@@ -114,7 +114,7 @@ public class PlayerController : MonoBehaviour
 
         if (direction.magnitude >= 0.1f)
         {
-            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + _camera.eulerAngles.y;
             float angel = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref _turnSmoothVelocity,
                 TurnSmoothTime);
             transform.rotation = Quaternion.Euler(0f, angel, 0f);
