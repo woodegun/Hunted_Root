@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Slider accelerationMaxStaminaSlider;
 
     //Закапывание
+    [SerializeField]private GameObject baseModel;
     [SerializeField] private Slider digInKdSlider;
     private const float DigInKdMax = 20; //кд для закапывания
     private float _currentDigInKd;
@@ -61,6 +62,7 @@ public class PlayerController : MonoBehaviour
         {
             _playerState = PlayerState.UnderTheGround;
             _currentDigInKd = DigInKdMax;
+            baseModel.SetActive(false);
         }
 
         digInKdSlider.value = _currentDigInKd / DigInKdMax;
@@ -70,9 +72,15 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            _playerState = PlayerState.OnTheGround;
-            _currentDigInKd = DigInKdMax;
+            DoDigOut();
         }
+    }
+
+    public void DoDigOut()
+    {
+        _playerState = PlayerState.OnTheGround;
+        _currentDigInKd = DigInKdMax;
+        baseModel.SetActive(true);
     }
 
     private void Acceleration()
