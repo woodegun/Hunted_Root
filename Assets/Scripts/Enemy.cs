@@ -3,6 +3,8 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
+    private int HP = 30;
+
     [SerializeField] private Transform[] PatrolPoints;
     private Transform _nextPatrolPoint;
     private int _nextPatrolPointIndex;
@@ -179,6 +181,15 @@ public class Enemy : MonoBehaviour
         if (player != null)
         {
             player.Die();
+        }
+    }
+
+    public void DealDamage(int damage)
+    {
+        HP -= damage;
+        if (HP <= 0)
+        {
+            Destroy(gameObject);
         }
     }
 }

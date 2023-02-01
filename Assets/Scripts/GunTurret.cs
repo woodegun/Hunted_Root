@@ -64,7 +64,7 @@ public class GunTurret : MonoBehaviour
         if (allowButtonHold) shooting = Input.GetKey(KeyCode.Mouse0);
         else shooting = Input.GetKeyDown(KeyCode.Mouse0);
 
-        if (Input.GetKeyDown(KeyCode.R) && bulletsLeft < magazineSize && !reloading) Reload();
+        // if (Input.GetKeyDown(KeyCode.R) && bulletsLeft < magazineSize && !reloading) Reload();
 
         if (readyToShoot && shooting && !reloading)
         {
@@ -134,6 +134,7 @@ public class GunTurret : MonoBehaviour
     private void Reload()
     {
         reloading = true;
+        Turret.player.DoDigOut();
         Invoke("ReloadFinished", reloadTime);
     }
 
