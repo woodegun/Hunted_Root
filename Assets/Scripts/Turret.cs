@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Turret : MonoBehaviour
 {
-    private PlayerController player;
+    public PlayerController player;
     public bool turretUnderControl;
 
     private CinemachineFreeLook cameraController;

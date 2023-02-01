@@ -20,6 +20,10 @@ public class Enemy : MonoBehaviour
     private float _currentVisibilityRange = 30f;
     private float _hearingRange = 100f;
 
+    private bool fear;
+    private float maxFearTime = 15f;
+    private float carFearTime;
+
     private void Awake()
     {
         _navMeshAgent = GetComponent<NavMeshAgent>();
@@ -45,6 +49,11 @@ public class Enemy : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (fear)
+        {
+            BeAfraid();
+            return;
+        }
         HuntPlayer();
         HuntNoise();
         Patrol();
@@ -52,6 +61,23 @@ public class Enemy : MonoBehaviour
         {
             _navMeshAgent.destination = _target.position;
         }
+    }
+
+    public void Scare()
+    {
+        fear = true;
+        carFearTime = maxFearTime;
+    }
+    private void BeAfraid()
+    {
+        if (carFearTime <= 0)
+        {
+            carFearTime = 0;
+            fear = false;
+            return;
+        }
+
+        carFearTime -= Time.deltaTime;
     }
 
     private void HuntPlayer()
