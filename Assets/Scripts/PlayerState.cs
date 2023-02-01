@@ -2,5 +2,6 @@ public enum PlayerState
 {
     OnTheGround,
     UnderTheGround,
-    Dead
+    Dead,
+    Win
 }

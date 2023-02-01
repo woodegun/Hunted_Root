@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -54,6 +53,7 @@ public class Enemy : MonoBehaviour
             BeAfraid();
             return;
         }
+
         HuntPlayer();
         HuntNoise();
         Patrol();
@@ -68,6 +68,7 @@ public class Enemy : MonoBehaviour
         fear = true;
         carFearTime = maxFearTime;
     }
+
     private void BeAfraid()
     {
         if (carFearTime <= 0)
@@ -83,23 +84,24 @@ public class Enemy : MonoBehaviour
     private void HuntPlayer()
     {
         float distanceToPlayer = GetDistanceTo(_player);
-        if (_playerController._playerState != PlayerState.UnderTheGround && distanceToPlayer <= _currentVisibilityRange && _target != _player)
+        if (!_playerController.isElusive() && distanceToPlayer <= _currentVisibilityRange && _target != _player)
         {
             CapturePlayer();
         }
 
-        if (_playerController._playerState == PlayerState.UnderTheGround || distanceToPlayer > _currentVisibilityRange && _target == _player)
+        if (_playerController.isElusive() || (distanceToPlayer > _currentVisibilityRange && _target == _player))
         {
             LetPlayerGo();
         }
     }
-    
+
     private void HuntNoise()
     {
         if (_target == _player || _noise == null)
         {
             return;
         }
+
         _target = _noise;
         float distanceToNoise = GetDistanceTo(_noise);
         if (distanceToNoise <= 1)
@@ -170,6 +172,13 @@ public class Enemy : MonoBehaviour
             this._noise = _noise;
         }
     }
-    
-    
+
+    private void OnTriggerEnter(Collider other)
+    {
+        var player = other.GetComponent<PlayerController>();
+        if (player != null)
+        {
+            player.Die();
+        }
+    }
 }

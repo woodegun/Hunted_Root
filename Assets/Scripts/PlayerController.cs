@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,7 +21,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Slider accelerationMaxStaminaSlider;
 
     //Закапывание
-    [SerializeField]private GameObject baseModel;
+    [SerializeField] private GameObject baseModel;
     [SerializeField] private Slider digInKdSlider;
     private const float DigInKdMax = 20; //кд для закапывания
     private float _currentDigInKd;
@@ -28,10 +29,15 @@ public class PlayerController : MonoBehaviour
     //Камера
     private Transform _camera;
 
+    public GameObject DiePanel;
+    public TextMeshProUGUI RestartBtnText;
+    private Image diePanelImage;
+
     private void Start()
     {
         _controller = gameObject.GetComponent<CharacterController>();
         _camera = FindObjectOfType<Camera>().transform;
+        if (DiePanel != null) diePanelImage = DiePanel.GetComponent<Image>();
     }
 
     void Update()
@@ -47,6 +53,9 @@ public class PlayerController : MonoBehaviour
                 DigOut();
                 break;
             case PlayerState.Dead:
+                UpdateDiePanel();
+                break;
+            case PlayerState.Win:
                 break;
         }
     }
@@ -54,9 +63,8 @@ public class PlayerController : MonoBehaviour
     private void DigIn()
     {
         if (_currentDigInKd > 0)
-        {
             _currentDigInKd -= Time.deltaTime;
-        }
+
 
         if (Input.GetKeyDown(KeyCode.Space) && _currentDigInKd <= 0)
         {
@@ -65,15 +73,15 @@ public class PlayerController : MonoBehaviour
             baseModel.SetActive(false);
         }
 
-        digInKdSlider.value = _currentDigInKd / DigInKdMax;
+        if (digInKdSlider != null)
+            digInKdSlider.value = _currentDigInKd / DigInKdMax;
+        else
+            Debug.LogWarning("Setup digInKdSlider");
     }
 
     private void DigOut()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            DoDigOut();
-        }
+        if (Input.GetKeyDown(KeyCode.Space)) DoDigOut();
     }
 
     public void DoDigOut()
@@ -102,13 +110,9 @@ public class PlayerController : MonoBehaviour
         {
             _accelerationSpeed = 0;
             if (_accelerationStamina < AccelerationMaxStamina)
-            {
                 _accelerationStamina += Time.deltaTime;
-            }
             else
-            {
                 _accelerationStamina = AccelerationMaxStamina;
-            }
         }
 
         accelerationMaxStaminaSlider.value = _accelerationStamina / AccelerationMaxStamina;
@@ -132,5 +136,33 @@ public class PlayerController : MonoBehaviour
         }
 
         _controller.Move(Vector3.down * Time.deltaTime * 3);
+    }
+
+    public void Die()
+    {
+        if (DiePanel != null)
+            DiePanel.SetActive(true);
+        else
+            Debug.LogWarning("Setup DiePanel");
+
+        _playerState = PlayerState.Dead;
+    }
+
+    private void UpdateDiePanel()
+    {
+        var color = diePanelImage.color;
+        color.a += Time.deltaTime;
+        diePanelImage.color = color;
+        if (color.a > 2)
+        {
+            color = RestartBtnText.color;
+            color.a += Time.deltaTime;
+            RestartBtnText.color = color;
+        }
+    }
+
+    public bool isElusive()
+    {
+        return _playerState == PlayerState.Win || _playerState == PlayerState.UnderTheGround;
     }
 }
