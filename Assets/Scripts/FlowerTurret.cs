@@ -46,16 +46,16 @@ public class FlowerTurret : MonoBehaviour
         if (curReloadTime < 0) curReloadTime = 0;
     }
 
-    private List<Enemy> GetEnemyInRange()
+    private List<EnemyBehaviour> GetEnemyInRange()
     {
         GameObject[] enemis = GameObject.FindGameObjectsWithTag("Enemy");
-        var result = new List<Enemy>();
+        var result = new List<EnemyBehaviour>();
         foreach (var enemy in enemis)
         {
             float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
             if (distanceToEnemy <= range)
             {
-                result.Add(enemy.GetComponent<Enemy>());
+                result.Add(enemy.GetComponent<EnemyBehaviour>());
             }
         }
 
