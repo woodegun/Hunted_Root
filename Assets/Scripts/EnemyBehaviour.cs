@@ -13,11 +13,9 @@ public abstract class EnemyBehaviour : MonoBehaviour
     protected Transform _player;
     protected PlayerController _playerController;
     protected Transform _target;
-    // private Transform _noise;
-    // protected bool _moveToTarget;
 
-    protected const float VisibilityRangeMin = 30f;
-    protected const float AdditionalVisibilityRange = 10f;
+    [SerializeField] protected const float VisibilityRangeMin = 30f;
+    [SerializeField] protected const float AdditionalVisibilityRange = 10f;
     protected float _currentVisibilityRange = 30f;
 
     void Start()

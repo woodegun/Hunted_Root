@@ -13,6 +13,14 @@ public class PlayerController : MonoBehaviour
     private const float TurnSmoothTime = 0.1f;
     private float _turnSmoothVelocity;
 
+    //web
+    private bool isSpeedDecreased;
+    private float curDecreasedSpeedTime;
+    private float maxDecreasedSpeedTime = 2;
+    private float maxDecreasedSpeed = 2;
+    private float curDecreasedSpeed = 0;
+
+
     //Ускорение
     private float _accelerationSpeed;
     private const float AccelerationMaxSpeed = 4;
@@ -45,6 +53,7 @@ public class PlayerController : MonoBehaviour
         switch (_playerState)
         {
             case PlayerState.OnTheGround:
+                SpeedUpdate();
                 Acceleration();
                 Movement();
                 DigIn();
@@ -132,7 +141,8 @@ public class PlayerController : MonoBehaviour
             transform.rotation = Quaternion.Euler(0f, angel, 0f);
 
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-            _controller.Move(moveDir.normalized * Time.deltaTime * (PlayerSpeed + _accelerationSpeed));
+            _controller.Move(moveDir.normalized * Time.deltaTime *
+                             (PlayerSpeed + _accelerationSpeed - curDecreasedSpeed));
         }
 
         _controller.Move(Vector3.down * Time.deltaTime * 3);
@@ -164,5 +174,25 @@ public class PlayerController : MonoBehaviour
     public bool isElusive()
     {
         return _playerState == PlayerState.Win || _playerState == PlayerState.UnderTheGround;
+    }
+
+    public void DecreaseSpeed()
+    {
+        curDecreasedSpeedTime = maxDecreasedSpeedTime;
+        curDecreasedSpeed = maxDecreasedSpeed;
+        isSpeedDecreased = true;
+    }
+
+    private void SpeedUpdate()
+    {
+        if (isSpeedDecreased)
+        {
+            curDecreasedSpeedTime -= Time.deltaTime;
+            if (curDecreasedSpeedTime <= 0)
+            {
+                isSpeedDecreased = false;
+                curDecreasedSpeed = 0;
+            }
+        }
     }
 }

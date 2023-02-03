@@ -3,19 +3,27 @@ using UnityEngine.AI;
 
 public class Skeleton : EnemyBehaviour
 {
-    private NavMeshAgent _navMeshAgent;
-    private Transform _noise;
-    private float _hearingRange = 100f;
-    
-    private bool fear;
-    private float maxFearTime = 15f;
-    private float carFearTime;
-    
+    protected NavMeshAgent _navMeshAgent;
+    protected Transform _noise;
+    protected float _hearingRange = 100f;
+
+    protected bool fear;
+    protected float maxFearTime = 15f;
+    protected float carFearTime;
+
+    //web
+    private bool isSpeedDecreased;
+    private float curDecreasedSpeedTime;
+    private float maxDecreasedSpeedTime = 2;
+    [SerializeField] private float decreasedSpeed = 3;
+    [SerializeField] private float normalSpeed = 5;
+
     private void Awake()
     {
         _navMeshAgent = GetComponent<NavMeshAgent>();
+        _navMeshAgent.speed = normalSpeed;
     }
-    
+
     private void FixedUpdate()
     {
         if (fear)
@@ -24,6 +32,7 @@ public class Skeleton : EnemyBehaviour
             return;
         }
 
+        SpeedUpdate();
         HuntPlayer();
         HuntNoise();
         Patrol();
@@ -32,18 +41,18 @@ public class Skeleton : EnemyBehaviour
             _navMeshAgent.destination = _target.position;
         }
     }
-    
-    private void OnEnable()
+
+    protected void OnEnable()
     {
         Stick.onBranchCrunches += SetNoise;
     }
 
-    private void OnDisable()
+    protected void OnDisable()
     {
         Stick.onBranchCrunches -= SetNoise;
     }
-    
-    private void SetNoise(Transform _noise)
+
+    protected void SetNoise(Transform _noise)
     {
         float distanceToNoise = Vector3.Distance(transform.position, _noise.position);
         if (distanceToNoise <= _hearingRange)
@@ -51,8 +60,8 @@ public class Skeleton : EnemyBehaviour
             this._noise = _noise;
         }
     }
-    
-    private void HuntNoise()
+
+    protected void HuntNoise()
     {
         if (_target == _player || _noise == null)
         {
@@ -67,15 +76,15 @@ public class Skeleton : EnemyBehaviour
             _target = _nextPatrolPoint;
         }
     }
-    
-    private void OnDrawGizmosSelected()
+
+    protected void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, _currentVisibilityRange);
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, _hearingRange);
     }
-    
+
     public override void DealDamage(int damage)
     {
         HP -= damage;
@@ -84,7 +93,7 @@ public class Skeleton : EnemyBehaviour
             Destroy(gameObject);
         }
     }
-    
+
     public override void Scare()
     {
         fear = true;
@@ -92,7 +101,7 @@ public class Skeleton : EnemyBehaviour
         _navMeshAgent.destination = transform.position;
     }
 
-    private void BeAfraid()
+    protected void BeAfraid()
     {
         if (carFearTime <= 0)
         {
@@ -102,5 +111,28 @@ public class Skeleton : EnemyBehaviour
         }
 
         carFearTime -= Time.deltaTime;
+    }
+
+    public void DecreaseSpeed()
+    {
+        isSpeedDecreased = true;
+        curDecreasedSpeedTime = maxDecreasedSpeedTime;
+    }
+
+    private void SpeedUpdate()
+    {
+        if (isSpeedDecreased)
+        {
+            curDecreasedSpeedTime -= Time.deltaTime;
+            if (curDecreasedSpeedTime <= 0)
+            {
+                isSpeedDecreased = false;
+                _navMeshAgent.speed = normalSpeed;
+            }
+            else
+            {
+                _navMeshAgent.speed = decreasedSpeed;
+            }
+        }
     }
 }
