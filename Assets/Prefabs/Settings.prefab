@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1061418411194651535
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1061418411194651533}
+  - component: {fileID: 1061418411194651532}
+  m_Layer: 0
+  m_Name: Settings
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1061418411194651533
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1061418411194651535}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -6.132908, y: 33.37047, z: 12.395187}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1061418411194651532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1061418411194651535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db124714e6584644ad5bd8e935f8bf17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerSpeed: 8
+  AccelerationMaxSpeed: 4
+  AccelerationMaxStamina: 5
+  DigInKdMax: 20
+  MaxFearTime: 15
+  MaxDecreasedSpeedTime: 2
+  SkeletonDecreasedSpeed: 3
+  SkeletonNormalSpeed: 5
+  HearingRange: 100
+  GhostSpeed: 0
+  MaxWebShootTime: 15
+  SpiderNormalSpeed: 5
+  SuperSpeed: 8
+  MaxSuperSpeedTime: 2
+  WebLiveTime: 1500
+  CreateRootsMaxTimer: 2
+  ShootRate1Phase: 8
+  ShootRate2Phase: 7
+  ShootRate3Phase: 6
+  ShootRate4Phase: 5
+  SpawnTime1Phase: 7
+  SpawnTime2Phase: 8
+  SpawnTime3Phase: 9
+  SpawnTime4Phase: 10
+  BossMaxHP: 100

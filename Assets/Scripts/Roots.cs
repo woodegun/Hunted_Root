@@ -4,11 +4,12 @@ public class Roots : MonoBehaviour
 {
     [SerializeField] private GameObject RootWeapon;
     private bool createRoots;
-    [SerializeField] private float createRootsMaxTimer = 2;
+    [SerializeField] private float createRootsMaxTimer;
     private float createRootsCurTimer;
 
     private void Start()
     {
+        createRootsMaxTimer = GlobalSettings.INSTANSE.CreateRootsMaxTimer;
         createRootsCurTimer = createRootsMaxTimer;
     }
 

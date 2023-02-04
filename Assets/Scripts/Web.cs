@@ -3,7 +3,12 @@ using UnityEngine;
 
 public class Web : MonoBehaviour
 {
-    private float LiveTime = 1500f;
+    [SerializeField] private float _liveTime;
+
+    private void Start()
+    {
+        _liveTime = GlobalSettings.INSTANSE.WebLiveTime;
+    }
 
     private void FixedUpdate()
     {
@@ -12,13 +17,13 @@ public class Web : MonoBehaviour
 
     private void Withering()
     {
-        LiveTime -= Time.deltaTime;
-        if (LiveTime <= 0)
+        _liveTime -= Time.deltaTime;
+        if (_liveTime <= 0)
         {
             Destroy(gameObject);
         }
     }
-    
+
     private void OnTriggerEnter(Collider other)
     {
         var player = other.GetComponent<PlayerController>();
@@ -27,13 +32,13 @@ public class Web : MonoBehaviour
             player.DecreaseSpeed();
             return;
         }
-        
+
         var skeleton = other.GetComponent<Skeleton>();
         if (skeleton != null)
         {
             skeleton.DecreaseSpeed();
         }
-        
+
         var spider = other.GetComponent<Spider>();
         if (spider != null)
         {

@@ -3,7 +3,12 @@ using UnityEngine;
 public class Ghost : EnemyBehaviour
 {
     [SerializeField] private float Speed;
-    
+
+    void Start()
+    {
+        Speed = GlobalSettings.INSTANSE.GhostSpeed;
+    }
+
     private void FixedUpdate()
     {
         HuntPlayer();

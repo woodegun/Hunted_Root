@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;
 public class Boss : MonoBehaviour
 {
     private float curHP;
-    private float maxHP = 100;
+    private float maxHP;
 
     private Transform _player;
 
@@ -15,10 +15,10 @@ public class Boss : MonoBehaviour
     [SerializeField] private List<Transform> RootsSpawnPoints;
 
     private float curSpawnTime;
-    [SerializeField] private float SpawnTime1Phase = 7;
-    [SerializeField] private float SpawnTime2Phase = 8;
-    [SerializeField] private float SpawnTime3Phase = 9;
-    [SerializeField] private float SpawnTime4Phase = 10;
+    [SerializeField] private float SpawnTime1Phase;
+    [SerializeField] private float SpawnTime2Phase;
+    [SerializeField] private float SpawnTime3Phase;
+    [SerializeField] private float SpawnTime4Phase;
 
     [SerializeField] private GameObject Roots;
     [SerializeField] private GameObject Skeleton;
@@ -31,14 +31,25 @@ public class Boss : MonoBehaviour
     [SerializeField] private GameObject shootPoint;
     private float curShootRate;
     private float maxShootRate;
-    [SerializeField] private float ShootRate1Phase = 8;
-    [SerializeField] private float ShootRate2Phase = 7;
-    [SerializeField] private float ShootRate3Phase = 6;
-    [SerializeField] private float ShootRate4Phase = 5;
+    [SerializeField] private float ShootRate1Phase;
+    [SerializeField] private float ShootRate2Phase;
+    [SerializeField] private float ShootRate3Phase;
+    [SerializeField] private float ShootRate4Phase;
 
     void Start()
     {
+        SpawnTime1Phase = GlobalSettings.INSTANSE.SpawnTime1Phase;
+        SpawnTime2Phase = GlobalSettings.INSTANSE.SpawnTime2Phase;
+        SpawnTime3Phase = GlobalSettings.INSTANSE.SpawnTime3Phase;
+        SpawnTime4Phase = GlobalSettings.INSTANSE.SpawnTime4Phase;
+
+        ShootRate1Phase = GlobalSettings.INSTANSE.ShootRate1Phase;
+        ShootRate2Phase = GlobalSettings.INSTANSE.ShootRate2Phase;
+        ShootRate3Phase = GlobalSettings.INSTANSE.ShootRate3Phase;
+        ShootRate4Phase = GlobalSettings.INSTANSE.ShootRate4Phase;
+
         _player = FindObjectOfType<PlayerController>().transform;
+        maxHP = GlobalSettings.INSTANSE.BossMaxHP;
         curHP = maxHP;
         BossPhase = BossPhase.First;
         maxShootRate = ShootRate1Phase;
@@ -169,6 +180,7 @@ public class Boss : MonoBehaviour
             Debug.LogWarning("Заполни SpawnPoints для монстров");
             return;
         }
+
         var spawnPoint = SpawnPoints[Random.Range(0, SpawnPoints.Count - 1)];
         Instantiate(monster, spawnPoint.position, Quaternion.identity);
     }
@@ -178,7 +190,7 @@ public class Boss : MonoBehaviour
         if (RootsSpawnPoints == null || RootsSpawnPoints.Count == 0)
             return;
         var spawnPoint = RootsSpawnPoints[Random.Range(0, RootsSpawnPoints.Count - 1)];
-        var root = Instantiate(Roots, new Vector3(0,3.3f,0), Quaternion.identity);
+        var root = Instantiate(Roots, new Vector3(0, 3.3f, 0), Quaternion.identity);
         root.transform.SetParent(spawnPoint.transform);
         RootsSpawnPoints.Remove(spawnPoint);
     }
@@ -206,7 +218,7 @@ public class Boss : MonoBehaviour
             Destroy(enemy);
         }
     }
-    
+
     private void OnTriggerEnter(Collider other)
     {
         var player = other.GetComponent<PlayerController>();

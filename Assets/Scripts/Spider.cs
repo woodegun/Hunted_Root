@@ -7,16 +7,24 @@ public class Spider : Skeleton
 
     private float curWebShootTime;
     [SerializeField] private float maxWebShootTime;
-    [SerializeField] private float NormalSpeed = 5;
-    [SerializeField] private float SuperSpeed = 8;
+    [SerializeField] private float NormalSpeed;
+    [SerializeField] private float SuperSpeed;
+    [SerializeField] private float maxSuperSpeedTime;
     [SerializeField] private float curSuperSpeedTime;
-    [SerializeField] private float maxSuperSpeedTime = 2;
 
     private bool isSpeedIncreased;
 
     private void Awake()
     {
         _navMeshAgent = GetComponent<NavMeshAgent>();
+    }
+
+    private void Start()
+    {
+        maxWebShootTime = GlobalSettings.INSTANSE.MaxWebShootTime;
+        NormalSpeed = GlobalSettings.INSTANSE.SpiderNormalSpeed;
+        SuperSpeed = GlobalSettings.INSTANSE.SpiderSuperSpeed;
+        maxSuperSpeedTime = GlobalSettings.INSTANSE.SpiderMaxSuperSpeedTime;
     }
 
     private void FixedUpdate()

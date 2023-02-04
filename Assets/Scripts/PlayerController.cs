@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
 
     //Движение
     private CharacterController _controller;
-    private const float PlayerSpeed = 8.0f;
+    private float PlayerSpeed;
     private const float TurnSmoothTime = 0.1f;
     private float _turnSmoothVelocity;
 
@@ -20,18 +20,17 @@ public class PlayerController : MonoBehaviour
     private float maxDecreasedSpeed = 2;
     private float curDecreasedSpeed = 0;
 
-
     //Ускорение
     private float _accelerationSpeed;
-    private const float AccelerationMaxSpeed = 4;
-    private const float AccelerationMaxStamina = 5; //запас ускорения
+    private float AccelerationMaxSpeed;
+    private float AccelerationMaxStamina; //запас ускорения
     private float _accelerationStamina = 5;
     [SerializeField] private Slider accelerationMaxStaminaSlider;
 
     //Закапывание
     [SerializeField] private GameObject baseModel;
     [SerializeField] private Slider digInKdSlider;
-    private const float DigInKdMax = 20; //кд для закапывания
+    private float DigInKdMax; //кд для закапывания
     private float _currentDigInKd;
 
     //Камера
@@ -43,6 +42,11 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        PlayerSpeed = GlobalSettings.INSTANSE.PlayerSpeed;
+        AccelerationMaxSpeed = GlobalSettings.INSTANSE.AccelerationMaxSpeed;
+        AccelerationMaxStamina = GlobalSettings.INSTANSE.AccelerationMaxStamina;
+        DigInKdMax = GlobalSettings.INSTANSE.DigInKdMax;
+
         _controller = gameObject.GetComponent<CharacterController>();
         _camera = FindObjectOfType<Camera>().transform;
         if (DiePanel != null) diePanelImage = DiePanel.GetComponent<Image>();
@@ -165,6 +169,7 @@ public class PlayerController : MonoBehaviour
             Debug.LogWarning("Запони diePanelImage & RestartBtnText");
             return;
         }
+
         var color = diePanelImage.color;
         color.a += Time.deltaTime;
         diePanelImage.color = color;

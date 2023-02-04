@@ -5,18 +5,27 @@ public class Skeleton : EnemyBehaviour
 {
     protected NavMeshAgent _navMeshAgent;
     protected Transform _noise;
-    protected float _hearingRange = 100f;
+    protected float _hearingRange;
 
     protected bool fear;
-    protected float maxFearTime = 15f;
+    protected float maxFearTime;
     protected float carFearTime;
 
     //web
     private bool isSpeedDecreased;
     private float curDecreasedSpeedTime;
-    private float maxDecreasedSpeedTime = 2;
-    [SerializeField] private float decreasedSpeed = 3;
-    [SerializeField] private float normalSpeed = 5;
+    private float maxDecreasedSpeedTime;
+    [SerializeField] private float decreasedSpeed;
+    [SerializeField] private float normalSpeed;
+
+    private void Start()
+    {
+        _hearingRange = GlobalSettings.INSTANSE.HearingRange;
+        maxFearTime = GlobalSettings.INSTANSE.MaxFearTime;
+        maxDecreasedSpeedTime = GlobalSettings.INSTANSE.MaxDecreasedSpeedTime;
+        decreasedSpeed = GlobalSettings.INSTANSE.SkeletonDecreasedSpeed;
+        normalSpeed = GlobalSettings.INSTANSE.SkeletonNormalSpeed;
+    }
 
     private void Awake()
     {
