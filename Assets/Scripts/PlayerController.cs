@@ -155,7 +155,7 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetFloat("Speed", 0f);
         }
-        _controller.Move(Vector3.down * Time.deltaTime * 3);
+        _controller.Move(Vector3.down * Time.deltaTime * 9.8f);
     }
 
     public void Die()
