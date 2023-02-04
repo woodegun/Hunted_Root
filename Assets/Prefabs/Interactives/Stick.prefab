@@ -56,7 +56,7 @@ AudioSource:
   m_GameObject: {fileID: 8786303073636953003}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -9059680261354131601, guid: dbd0d40e79c646a49aaac66f3c6ed612, type: 2}
   m_audioClip: {fileID: 8300000, guid: e33c3bf6d6b6e9543941f7b15ee0f95a, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -103,7 +103,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0

@@ -89,7 +89,6 @@ MonoBehaviour:
   muzzleFlash: {fileID: 0}
   ammunitionDisplay: {fileID: 0}
   attackPoint: {fileID: 2354224282221024155}
-  attackPoint2: {fileID: 2354224282221024155}
   allowInvoke: 1
 --- !u!1 &2354224282221024154
 GameObject:
@@ -114,9 +113,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2354224282221024154}
-  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0, y: 1.7099999, z: 2.32}
-  m_LocalScale: {x: 0.7, y: 1, z: 0.6999999}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: 1.783, z: 1.884}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2354224281983880005}
