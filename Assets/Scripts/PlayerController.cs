@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
     //Состояние
     public PlayerState _playerState = PlayerState.OnTheGround;
 
+    [SerializeField] private Animator animator;
+
     //Движение
     private CharacterController _controller;
     private float PlayerSpeed;
@@ -83,7 +85,7 @@ public class PlayerController : MonoBehaviour
         {
             _playerState = PlayerState.UnderTheGround;
             _currentDigInKd = DigInKdMax;
-            baseModel.SetActive(false);
+            animator.SetTrigger("Dig");
         }
 
         if (digInKdSlider != null)
@@ -99,9 +101,9 @@ public class PlayerController : MonoBehaviour
 
     public void DoDigOut()
     {
+        animator.SetTrigger("UnDig");
         _playerState = PlayerState.OnTheGround;
         _currentDigInKd = DigInKdMax;
-        baseModel.SetActive(true);
     }
 
     private void Acceleration()
@@ -127,7 +129,7 @@ public class PlayerController : MonoBehaviour
             else
                 _accelerationStamina = AccelerationMaxStamina;
         }
-
+        
         accelerationMaxStaminaSlider.value = _accelerationStamina / AccelerationMaxStamina;
     }
 
@@ -145,10 +147,14 @@ public class PlayerController : MonoBehaviour
             transform.rotation = Quaternion.Euler(0f, angel, 0f);
 
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-            _controller.Move(moveDir.normalized * Time.deltaTime *
-                             (PlayerSpeed + _accelerationSpeed - curDecreasedSpeed));
+            var curSpeed = PlayerSpeed + _accelerationSpeed - curDecreasedSpeed;
+            _controller.Move(moveDir.normalized * Time.deltaTime * curSpeed);
+            animator.SetFloat("Speed", curSpeed>PlayerSpeed ? 1f : 0.5f);
         }
-
+        else
+        {
+            animator.SetFloat("Speed", 0f);
+        }
         _controller.Move(Vector3.down * Time.deltaTime * 3);
     }
 

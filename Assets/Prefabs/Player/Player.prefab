@@ -10226,6 +10226,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerState: 0
+  animator: {fileID: 4153690986789889513}
   accelerationMaxStaminaSlider: {fileID: 0}
   baseModel: {fileID: 8147366493943818673}
   digInKdSlider: {fileID: 0}
@@ -15510,6 +15511,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 809b1989f795bfa47b730fa4b8a4a430, type: 3}
+--- !u!95 &4153690986789889513 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7181314288830073708, guid: 809b1989f795bfa47b730fa4b8a4a430, type: 3}
+  m_PrefabInstance: {fileID: 6489116132375342725}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8147366493943818673 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3106562442437445428, guid: 809b1989f795bfa47b730fa4b8a4a430, type: 3}

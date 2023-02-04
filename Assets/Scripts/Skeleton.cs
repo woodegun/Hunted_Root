@@ -11,6 +11,8 @@ public class Skeleton : EnemyBehaviour
     protected float maxFearTime;
     protected float carFearTime;
 
+    [SerializeField] private Animator SkeletonAnimator;
+
     //web
     private bool isSpeedDecreased;
     private float curDecreasedSpeedTime;
@@ -18,8 +20,9 @@ public class Skeleton : EnemyBehaviour
     [SerializeField] private float decreasedSpeed;
     [SerializeField] private float normalSpeed;
 
-    private void Start()
+    protected void Start()
     {
+        base.Start();
         _hearingRange = GlobalSettings.INSTANSE.HearingRange;
         maxFearTime = GlobalSettings.INSTANSE.MaxFearTime;
         maxDecreasedSpeedTime = GlobalSettings.INSTANSE.MaxDecreasedSpeedTime;
@@ -48,6 +51,11 @@ public class Skeleton : EnemyBehaviour
         if (_target != null)
         {
             _navMeshAgent.destination = _target.position;
+            SkeletonAnimator.SetFloat("Speed", 1f);
+        }
+        else
+        {
+            SkeletonAnimator.SetFloat("Speed", 0f);
         }
     }
 

@@ -4,8 +4,9 @@ public class Ghost : EnemyBehaviour
 {
     [SerializeField] private float Speed;
 
-    void Start()
+    protected void Start()
     {
+        base.Start();
         Speed = GlobalSettings.INSTANSE.GhostSpeed;
     }
 

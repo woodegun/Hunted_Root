@@ -49,14 +49,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PatrolPoints: []
+  SkeletonAnimator: {fileID: 0}
   decreasedSpeed: 3
   normalSpeed: 5
   Web: {fileID: 1149438845115740376, guid: 7d544f834b50f7c489e166edb43d28dd, type: 3}
   maxWebShootTime: 5
   NormalSpeed: 5
   SuperSpeed: 8
-  curSuperSpeedTime: 0
   maxSuperSpeedTime: 2
+  curSuperSpeedTime: 0
+  SpiderAnimator: {fileID: 2887452378408875057}
 --- !u!65 &5390981405365681759
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -165,6 +167,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7cd0ec1903173954aab353c1e3d3ce0a, type: 3}
+--- !u!95 &2887452378408875057 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1682503905188672248, guid: 7cd0ec1903173954aab353c1e3d3ce0a, type: 3}
+  m_PrefabInstance: {fileID: 4560808046176011977}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2946823539075497482 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1706308617500244163, guid: 7cd0ec1903173954aab353c1e3d3ce0a, type: 3}

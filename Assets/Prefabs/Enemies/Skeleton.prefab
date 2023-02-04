@@ -85,6 +85,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PatrolPoints: []
+  SkeletonAnimator: {fileID: 6667969193358918924}
   decreasedSpeed: 3
   normalSpeed: 5
 --- !u!54 &5370479397030732984
@@ -158,10 +159,19 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7963127162656909125, guid: 8e2c91f567aa8444b8df2306d803d27c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e2c91f567aa8444b8df2306d803d27c, type: 3}
 --- !u!4 &985084361100834396 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6831706094962150388, guid: 8e2c91f567aa8444b8df2306d803d27c, type: 3}
+  m_PrefabInstance: {fileID: 6009105367523540392}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &6667969193358918924 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1147788819614546084, guid: 8e2c91f567aa8444b8df2306d803d27c, type: 3}
   m_PrefabInstance: {fileID: 6009105367523540392}
   m_PrefabAsset: {fileID: 0}
