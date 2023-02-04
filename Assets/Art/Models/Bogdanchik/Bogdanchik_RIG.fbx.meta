@@ -1,9 +1,29 @@
 fileFormatVersion: 2
-guid: 596c684326a9f8047aebbe794963ede3
+guid: 60a6a2d9966555947b7a924c87bc2c60
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Eyes
+    second: {fileID: 2100000, guid: a7cbe2874b5134148939d8726e083dbb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pants
+    second: {fileID: 2100000, guid: a1e2334786c609d43b981134f2f61e4c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Skin
+    second: {fileID: 2100000, guid: e8a3285a11904844c90d534a50e1e7f8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: grass
+    second: {fileID: 2100000, guid: 93932f5865bc38741a76886f2ba3a131, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -35,7 +55,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 5
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -88,7 +108,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 1
+    globalScale: 5
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
