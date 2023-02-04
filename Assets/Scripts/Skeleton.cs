@@ -85,15 +85,6 @@ public class Skeleton : EnemyBehaviour
         Gizmos.DrawWireSphere(transform.position, _hearingRange);
     }
 
-    public override void DealDamage(int damage)
-    {
-        HP -= damage;
-        if (HP <= 0)
-        {
-            Destroy(gameObject);
-        }
-    }
-
     public override void Scare()
     {
         fear = true;

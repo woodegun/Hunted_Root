@@ -3,7 +3,7 @@ using UnityEngine;
 
 public abstract class EnemyBehaviour : MonoBehaviour
 {
-    protected int HP = 30;
+    protected int HP = 5;
 
     [SerializeField] protected List<Transform> PatrolPoints;
     protected Transform _nextPatrolPoint;
@@ -99,7 +99,14 @@ public abstract class EnemyBehaviour : MonoBehaviour
         }
     }
 
-    public abstract void DealDamage(int damage);
+    public void DealDamage(int damage)
+    {
+        HP -= damage;
+        if (HP <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
 
     public abstract void Scare();
 }

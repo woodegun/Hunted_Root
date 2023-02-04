@@ -21,11 +21,6 @@ public class Ghost : EnemyBehaviour
         Gizmos.DrawWireSphere(transform.position, _currentVisibilityRange);
     }
 
-    public override void DealDamage(int damage)
-    {
-        Debug.Log("Мне пофиг");
-    }
-
     public override void Scare()
     {
         Destroy(gameObject);

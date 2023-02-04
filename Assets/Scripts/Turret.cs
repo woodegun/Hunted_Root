@@ -68,5 +68,6 @@ public class Turret : MonoBehaviour
         turretUnderControl = false;
         cameraController.Follow = player.transform;
         cameraController.LookAt = player.transform;
+        player.DoDigOut();
     }
 }
