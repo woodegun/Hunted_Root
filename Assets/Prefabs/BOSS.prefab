@@ -92,18 +92,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: affce77b8cb7451b9c33355dfeba5ef7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  RootsSpawnPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  SpawnPoints: []
+  RootsSpawnPoints: []
   SpawnTime1Phase: 7
   SpawnTime2Phase: 8
   SpawnTime3Phase: 9
@@ -131,10 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Turret: {fileID: 2354224281983880011, guid: 82fa9c621a81f3f4a9f91e269f494f2b, type: 3}
-  SpawnPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  SpawnPoints: []
 --- !u!1001 &8210921624468881130
 PrefabInstance:
   m_ObjectHideFlags: 0

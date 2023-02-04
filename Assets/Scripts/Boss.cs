@@ -164,16 +164,22 @@ public class Boss : MonoBehaviour
 
     private void SpawnMonster(GameObject monster)
     {
+        if (SpawnPoints == null || SpawnPoints.Count == 0)
+        {
+            Debug.LogWarning("Заполни SpawnPoints для монстров");
+            return;
+        }
         var spawnPoint = SpawnPoints[Random.Range(0, SpawnPoints.Count - 1)];
         Instantiate(monster, spawnPoint.position, Quaternion.identity);
     }
 
     private void SpawnRoots()
     {
-        if (RootsSpawnPoints.Count == 0)
+        if (RootsSpawnPoints == null || RootsSpawnPoints.Count == 0)
             return;
         var spawnPoint = RootsSpawnPoints[Random.Range(0, RootsSpawnPoints.Count - 1)];
-        Instantiate(Roots, spawnPoint.position, Quaternion.identity);
+        var root = Instantiate(Roots, new Vector3(0,3.3f,0), Quaternion.identity);
+        root.transform.SetParent(spawnPoint.transform);
         RootsSpawnPoints.Remove(spawnPoint);
     }
 
@@ -198,6 +204,15 @@ public class Boss : MonoBehaviour
         foreach (var enemy in GameObject.FindGameObjectsWithTag("Enemy"))
         {
             Destroy(enemy);
+        }
+    }
+    
+    private void OnTriggerEnter(Collider other)
+    {
+        var player = other.GetComponent<PlayerController>();
+        if (player != null)
+        {
+            player.Die();
         }
     }
 }

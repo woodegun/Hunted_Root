@@ -1,7 +1,5 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 public class TurretSpawner : MonoBehaviour
 {
@@ -22,6 +20,11 @@ public class TurretSpawner : MonoBehaviour
 
     public void SpawnNext()
     {
+        if (SpawnPoints == null || SpawnPoints.Count == 0)
+        {
+            Debug.LogWarning("Заполни SpawnPoints для турелей");
+            return;
+        }
         var point = SpawnPoints[Random.Range(0, SpawnPoints.Count - 1)];
         Instantiate(Turret, point.transform.position, point.transform.rotation);
     }

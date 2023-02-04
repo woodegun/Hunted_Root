@@ -27,7 +27,7 @@ public class GunTurret : MonoBehaviour
 
     //Reference
     private Camera camera;
-    [SerializeField] private Transform attackPoint, attackPoint2;
+    [SerializeField] private Transform attackPoint;
     private Turret Turret;
 
     public bool allowInvoke;
@@ -101,15 +101,10 @@ public class GunTurret : MonoBehaviour
             targetPoint = ray.GetPoint(75);
 
         Vector3 direction = targetPoint - attackPoint.position;
-        Vector3 direction2 = targetPoint - attackPoint2.position;
         
         GameObject currentBullet = Instantiate(bullet, attackPoint.position, Quaternion.identity);
         currentBullet.transform.forward = direction.normalized;
         currentBullet.GetComponent<Rigidbody>().AddForce(attackPoint.rotation * new Vector3(0,1,0) * shootForce, ForceMode.Impulse);
-
-        GameObject currentBullet2 = Instantiate(bullet, attackPoint2.position, Quaternion.identity);
-        currentBullet2.transform.forward = direction2.normalized;
-        currentBullet2.GetComponent<Rigidbody>().AddForce(attackPoint2.rotation * new Vector3(0,1,0) * shootForce, ForceMode.Impulse);
         
         if (muzzleFlash != null)
         {

@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
 
     //Движение
     private CharacterController _controller;
-    private const float PlayerSpeed = 5.0f;
+    private const float PlayerSpeed = 8.0f;
     private const float TurnSmoothTime = 0.1f;
     private float _turnSmoothVelocity;
 
@@ -160,6 +160,11 @@ public class PlayerController : MonoBehaviour
 
     private void UpdateDiePanel()
     {
+        if (diePanelImage == null || RestartBtnText == null)
+        {
+            Debug.LogWarning("Запони diePanelImage & RestartBtnText");
+            return;
+        }
         var color = diePanelImage.color;
         color.a += Time.deltaTime;
         diePanelImage.color = color;
