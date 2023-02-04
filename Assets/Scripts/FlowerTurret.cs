@@ -1,26 +1,36 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class FlowerTurret : MonoBehaviour
 {
-    private float range = 20f;
-    private float maxReloadTime = 20f;
+    public float range = 20f;
+    private float reloadTime = 20f;
     private float curReloadTime;
+    private PlayerController Player;
+    public GameObject UnactiveFlower;
+    public GameObject ActiveFlower;
 
-    private Turret turret;
+    //private Turret turret;
 
     private void Start()
     {
-        turret = GetComponent<Turret>();
+        UnactiveFlower.SetActive(true);
+        ActiveFlower.SetActive(false);
+        //turret = GetComponent<Turret>();
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        Player = other.GetComponent<PlayerController>();
     }
 
     private void Update()
     {
-        if (!turret.turretUnderControl)
-        {
-            return;
-        }
+        //if (!turret.turretUnderControl)
+        //{
+        //    return;
+        //}
         Reload();
         Shoot();
     }
@@ -29,21 +39,32 @@ public class FlowerTurret : MonoBehaviour
     {
         if (curReloadTime > 0) return;
 
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Player != null && Input.GetKeyDown(KeyCode.Mouse0))
         {
+            UnactiveFlower.SetActive(false);
+            ActiveFlower.SetActive(true);
+
             Debug.Log("Бум");
             foreach (var enemy in GetEnemyInRange())
             {
                 enemy.Scare();
             }
-            turret.player.DoDigOut();
+            curReloadTime = reloadTime;
+            //turret.player.DoDigOut();
         }
     }
-
     private void Reload()
     {
-        if (curReloadTime > 0) curReloadTime -= Time.deltaTime;
-        if (curReloadTime < 0) curReloadTime = 0;
+        if (curReloadTime > 0)
+        {
+            curReloadTime -= Time.deltaTime;
+        }
+        if (curReloadTime <= 0) 
+        {
+            UnactiveFlower.SetActive(true);
+            ActiveFlower.SetActive(false);
+            curReloadTime = 0; 
+        }
     }
 
     private List<EnemyBehaviour> GetEnemyInRange()
