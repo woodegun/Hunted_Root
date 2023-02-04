@@ -1,4 +1,3 @@
-using System;
 using Cinemachine;
 using UnityEngine;
 
@@ -42,25 +41,32 @@ public class Turret : MonoBehaviour
         if (player != null && player._playerState == PlayerState.UnderTheGround && !turretUnderControl)
         {
             Debug.Log("turretUnderControl");
-            if (ui!=null)
+            if (ui != null)
             {
                 ui.SetActive(true);
             }
+
             turretUnderControl = true;
             cameraController.Follow = transform;
             cameraController.LookAt = transform;
         }
-        
+
         if (player != null && player._playerState == PlayerState.OnTheGround && turretUnderControl)
         {
-            if (ui!=null)
-            {
-                ui.SetActive(false);
-            }
-            Debug.Log("!turretUnderControl");
-            turretUnderControl = false;
-            cameraController.Follow = player.transform;
-            cameraController.LookAt = player.transform;
+            DoDigOut();
         }
+    }
+
+    public void DoDigOut()
+    {
+        if (ui != null)
+        {
+            ui.SetActive(false);
+        }
+
+        Debug.Log("!turretUnderControl");
+        turretUnderControl = false;
+        cameraController.Follow = player.transform;
+        cameraController.LookAt = player.transform;
     }
 }

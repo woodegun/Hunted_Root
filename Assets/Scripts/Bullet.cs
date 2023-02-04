@@ -16,6 +16,12 @@ public class Bullet : MonoBehaviour
         {
             enemy.DealDamage(damage);
         }
+        
+        var boss = other.GetComponent<Boss>();
+        if (boss != null)
+        {
+            boss.DealDamage(damage);
+        }
         Destroy(gameObject);
     }
 }

@@ -1,15 +1,14 @@
-using System;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
 public abstract class EnemyBehaviour : MonoBehaviour
 {
     protected int HP = 30;
 
-    [SerializeField] protected Transform[] PatrolPoints;
+    [SerializeField] protected List<Transform> PatrolPoints;
     protected Transform _nextPatrolPoint;
     protected int _nextPatrolPointIndex;
-    
+
     protected Transform _player;
     protected PlayerController _playerController;
     protected Transform _target;
@@ -22,13 +21,20 @@ public abstract class EnemyBehaviour : MonoBehaviour
     {
         _player = FindObjectOfType<PlayerController>().transform;
         _playerController = _player.GetComponent<PlayerController>();
-        _nextPatrolPoint = PatrolPoints[_nextPatrolPointIndex];
-        _target = _nextPatrolPoint;
+        _nextPatrolPoint = transform;
+        if (_nextPatrolPoint == null)
+        {
+            _target = transform;
+        }
+        else
+        {
+            _target = _nextPatrolPoint;
+        }
     }
 
     protected void HuntPlayer()
     {
-        float distanceToPlayer = Vector3.Distance(transform.position,_player.position);
+        float distanceToPlayer = Vector3.Distance(transform.position, _player.position);
         if (!_playerController.isElusive() && distanceToPlayer <= _currentVisibilityRange && _target != _player)
         {
             CapturePlayer();
@@ -69,15 +75,21 @@ public abstract class EnemyBehaviour : MonoBehaviour
 
     private void UpdateNextPatrolPoint()
     {
+        if (PatrolPoints == null || PatrolPoints.Count == 0)
+        {
+            _nextPatrolPoint = transform;
+            return;
+        }
+
         _nextPatrolPointIndex++;
-        if (PatrolPoints.Length <= _nextPatrolPointIndex)
+        if (PatrolPoints.Count <= _nextPatrolPointIndex)
         {
             _nextPatrolPointIndex = 0;
         }
 
         _nextPatrolPoint = PatrolPoints[_nextPatrolPointIndex];
     }
-    
+
     private void OnTriggerEnter(Collider other)
     {
         var player = other.GetComponent<PlayerController>();
