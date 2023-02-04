@@ -37,6 +37,10 @@ public class GlobalSettings : MonoBehaviour
     public float SpawnTime3Phase = 9;
     public float SpawnTime4Phase = 10;
     public float BossMaxHP = 100;
+    
+    [Header("Enemy")]
+    public float VisibilityRangeMin = 30f;
+    public float AdditionalVisibilityRange = 10f;
 
     private void Awake()
     {

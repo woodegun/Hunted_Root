@@ -8,6 +8,8 @@ public class TurretSpawner : MonoBehaviour
     [SerializeField] private GameObject Turret;
     [SerializeField] private List<GameObject> SpawnPoints;
 
+    private int _lastIndex;
+
     private void Awake()
     {
         INSTANT = this;
@@ -25,7 +27,22 @@ public class TurretSpawner : MonoBehaviour
             Debug.LogWarning("Заполни SpawnPoints для турелей");
             return;
         }
-        var point = SpawnPoints[Random.Range(0, SpawnPoints.Count - 1)];
+
+        var point = SpawnPoints[GetIndex()];
         Instantiate(Turret, point.transform.position, point.transform.rotation);
+    }
+
+    private int GetIndex()
+    {
+        if (SpawnPoints.Count == 1) return 0;
+        int result;
+        do
+        {
+            result = Random.Range(0, SpawnPoints.Count - 1);
+        } while (result.Equals(_lastIndex));
+
+        _lastIndex = result;
+        Debug.Log("Retur index:" + result);
+        return result;
     }
 }

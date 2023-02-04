@@ -5,9 +5,11 @@ public class Door : MonoBehaviour
 {
     [SerializeField] private GameObject DoorObj;
     [SerializeField] private GameObject Boss;
+    private AudioSource _audioSource;
 
     private void Start()
     {
+        _audioSource = GetComponent<AudioSource>();
         Boss.SetActive(false);
     }
 
@@ -18,6 +20,7 @@ public class Door : MonoBehaviour
         {
             DoorObj.SetActive(true);
             Boss.SetActive(true);
+            _audioSource.Play();
         }
     }
 }

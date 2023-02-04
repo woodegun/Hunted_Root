@@ -23,7 +23,7 @@ public class GunTurret : MonoBehaviour
     public TextMeshProUGUI ammunitionDisplay;
 
     //States
-    private bool shooting, readyToShoot, reloading;
+    private bool shooting, readyToShoot;
 
     //Reference
     private Camera camera;
@@ -70,13 +70,11 @@ public class GunTurret : MonoBehaviour
             return;
         }
 
-        // if (Input.GetKeyDown(KeyCode.R) && bulletsLeft < magazineSize && !reloading) Reload();
-
-        if (readyToShoot && shooting && !reloading)
+        if (readyToShoot && shooting)
         {
             if (bulletsLeft <= 0)
             {
-                Reload();
+                RemoveTurret();
             }
             else
             {
@@ -132,23 +130,10 @@ public class GunTurret : MonoBehaviour
         allowInvoke = true;
     }
 
-    private void Reload()
-    {
-        reloading = true;
-        RemoveTurret();
-        Invoke("ReloadFinished", reloadTime);
-    }
-
     private void RemoveTurret()
     {
         Turret.DoDigOut();
         TurretSpawner.INSTANT.SpawnNext();
         Destroy(gameObject); 
-    }
-
-    private void ReloadFinished()
-    {
-        bulletsLeft = magazineSize;
-        reloading = false;
     }
 }

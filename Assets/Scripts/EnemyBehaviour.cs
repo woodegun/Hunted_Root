@@ -13,12 +13,16 @@ public abstract class EnemyBehaviour : MonoBehaviour
     protected PlayerController _playerController;
     protected Transform _target;
 
-    [SerializeField] protected const float VisibilityRangeMin = 30f;
-    [SerializeField] protected const float AdditionalVisibilityRange = 10f;
-    protected float _currentVisibilityRange = 30f;
+    [SerializeField] protected float VisibilityRangeMin = 30f;
+    [SerializeField] protected float AdditionalVisibilityRange = 10f;
+    protected float _currentVisibilityRange;
 
     protected void Start()
     {
+        VisibilityRangeMin = GlobalSettings.INSTANSE.VisibilityRangeMin;
+        AdditionalVisibilityRange = GlobalSettings.INSTANSE.AdditionalVisibilityRange;
+        _currentVisibilityRange = VisibilityRangeMin;
+        
         _player = FindObjectOfType<PlayerController>().transform;
         _playerController = _player.GetComponent<PlayerController>();
         _nextPatrolPoint = transform;
