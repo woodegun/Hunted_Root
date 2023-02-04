@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4861435747105584163}
   - component: {fileID: 4653801980565594501}
   m_Layer: 0
-  m_Name: RootWeapon
+  m_Name: UndegroundRoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
