@@ -36,8 +36,12 @@ public class Boss : MonoBehaviour
     [SerializeField] private float ShootRate3Phase;
     [SerializeField] private float ShootRate4Phase;
 
+    [SerializeField] private GameObject LevelFinish;
+
     void Start()
     {
+        LevelFinish.SetActive(false);
+        
         SpawnTime1Phase = GlobalSettings.INSTANSE.SpawnTime1Phase;
         SpawnTime2Phase = GlobalSettings.INSTANSE.SpawnTime2Phase;
         SpawnTime3Phase = GlobalSettings.INSTANSE.SpawnTime3Phase;
@@ -205,6 +209,7 @@ public class Boss : MonoBehaviour
     {
         if (curHP <= 0)
         {
+            LevelFinish.SetActive(true);
             BossPhase = BossPhase.Die;
             DestroyAllEnemy();
             Destroy(gameObject);
