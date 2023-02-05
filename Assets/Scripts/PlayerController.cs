@@ -44,6 +44,8 @@ public class PlayerController : MonoBehaviour
     private Image diePanelImage;
     private TextController _textController;
 
+    [SerializeField] private bool GodMode;
+
     private void Start()
     {
         PlayerSpeed = GlobalSettings.INSTANSE.PlayerSpeed;
@@ -165,6 +167,8 @@ public class PlayerController : MonoBehaviour
 
     public void Die()
     {
+        if (GodMode) return;
+
         if (DiePanel != null)
             DiePanel.SetActive(true);
         else
