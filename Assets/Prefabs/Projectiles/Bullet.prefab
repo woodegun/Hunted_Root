@@ -87,6 +87,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bullet_Visual
       objectReference: {fileID: 0}
+    - target: {fileID: 2414122630316208234, guid: 6d0de47ac4dbfb940920436774e2bab7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3083698082912332496, guid: 6d0de47ac4dbfb940920436774e2bab7, type: 3}
       propertyPath: m_RootOrder
       value: 0
