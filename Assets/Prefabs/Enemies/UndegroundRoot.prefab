@@ -69,7 +69,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2546467428730204657, guid: d4030478461da764495bf89140e7532b, type: 3}
       propertyPath: m_Name
-      value: UndegroundRoot
+      value: UndegroundRoot_Visual
       objectReference: {fileID: 0}
     - target: {fileID: 2890481992944626507, guid: d4030478461da764495bf89140e7532b, type: 3}
       propertyPath: m_RootOrder
