@@ -6,6 +6,7 @@ public class LevelFinish : MonoBehaviour
 {
     [SerializeField] private Image winPanel;
     [SerializeField] private Image winImage;
+    [SerializeField] private TextMeshProUGUI winText;
     [SerializeField] private TextMeshProUGUI nextBtn;
     private bool win;
 
@@ -66,6 +67,7 @@ public class LevelFinish : MonoBehaviour
             color = nextBtn.color;
             color.a += Time.deltaTime;
             nextBtn.color = color;
+            winText.color = color;
         }
     }
 }
