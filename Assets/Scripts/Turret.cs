@@ -25,7 +25,11 @@ public class Turret : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        player = other.GetComponent<PlayerController>();
+        var obj = other.GetComponent<PlayerController>();
+        if (obj != null)
+        {
+            player = obj;
+        }
     }
 
     private void OnTriggerExit(Collider other)
