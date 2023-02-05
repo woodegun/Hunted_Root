@@ -756,6 +756,7 @@ GameObject:
   - component: {fileID: 4092143624646113052}
   - component: {fileID: 4092143624646113053}
   - component: {fileID: 4092143624646113054}
+  - component: {fileID: 4718714258774247760}
   m_Layer: 0
   m_Name: Third Person Camera
   m_TagString: Untagged
@@ -916,3 +917,11 @@ MonoBehaviour:
   m_Damping: 0
   m_DampingWhenOccluded: 0
   m_OptimalTargetDistance: 0
+--- !u!81 &4718714258774247760
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4092143624646113027}
+  m_Enabled: 1

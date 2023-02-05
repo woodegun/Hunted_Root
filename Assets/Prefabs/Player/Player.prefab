@@ -10367,7 +10367,6 @@ GameObject:
   - component: {fileID: 7588776890297646584}
   - component: {fileID: 7588776890297646585}
   - component: {fileID: 7588776890297646534}
-  - component: {fileID: 7379487031768844835}
   - component: {fileID: 4145314486033494323}
   m_Layer: 0
   m_Name: Player
@@ -10446,14 +10445,8 @@ MonoBehaviour:
   digInKdSlider: {fileID: 0}
   DiePanel: {fileID: 0}
   RestartBtnText: {fileID: 0}
---- !u!81 &7379487031768844835
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7588776890297646532}
-  m_Enabled: 1
+  ExitBtnText: {fileID: 0}
+  GodMode: 0
 --- !u!114 &4145314486033494323
 MonoBehaviour:
   m_ObjectHideFlags: 0
