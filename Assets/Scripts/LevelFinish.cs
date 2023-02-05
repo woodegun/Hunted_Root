@@ -40,12 +40,17 @@ public class LevelFinish : MonoBehaviour
             player._playerState = PlayerState.Win;
             if (winPanel != null)
             {
-                win = true;
-                winPanel.gameObject.SetActive(true);
+                Win();
             }
             else
                 Debug.LogWarning("Setup winPanel");
         }
+    }
+
+    public void Win()
+    {
+        win = true;
+        winPanel.gameObject.SetActive(true);
     }
 
     private void UpdatePanel()
