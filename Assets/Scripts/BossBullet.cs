@@ -3,7 +3,7 @@ using UnityEngine;
 public class BossBullet : MonoBehaviour
 {
     private Transform _player;
-    [SerializeField] private float Speed = 3;
+    [SerializeField] private float Speed = 6;
     private Vector3 SavedPosition;
 
     void Start()

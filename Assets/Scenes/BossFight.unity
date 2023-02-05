@@ -13115,12 +13115,60 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1061418411194651532, guid: f733d6309fb3aa64883348ba4ad94383, type: 3}
+      propertyPath: BossMaxHP
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061418411194651532, guid: f733d6309fb3aa64883348ba4ad94383, type: 3}
       propertyPath: GhostSpeed
-      value: 3
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061418411194651532, guid: f733d6309fb3aa64883348ba4ad94383, type: 3}
+      propertyPath: PlayerSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061418411194651532, guid: f733d6309fb3aa64883348ba4ad94383, type: 3}
+      propertyPath: WebLiveTime
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061418411194651532, guid: f733d6309fb3aa64883348ba4ad94383, type: 3}
+      propertyPath: SpiderSuperSpeed
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061418411194651532, guid: f733d6309fb3aa64883348ba4ad94383, type: 3}
+      propertyPath: RootsStayMaxTimer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061418411194651532, guid: f733d6309fb3aa64883348ba4ad94383, type: 3}
+      propertyPath: RootsStayMinTimer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061418411194651532, guid: f733d6309fb3aa64883348ba4ad94383, type: 3}
+      propertyPath: SpiderNormalSpeed
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1061418411194651532, guid: f733d6309fb3aa64883348ba4ad94383, type: 3}
       propertyPath: VisibilityRangeMin
       value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061418411194651532, guid: f733d6309fb3aa64883348ba4ad94383, type: 3}
+      propertyPath: CreateRootsMaxTimer
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061418411194651532, guid: f733d6309fb3aa64883348ba4ad94383, type: 3}
+      propertyPath: SkeletonNormalSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061418411194651532, guid: f733d6309fb3aa64883348ba4ad94383, type: 3}
+      propertyPath: AccelerationMaxSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061418411194651532, guid: f733d6309fb3aa64883348ba4ad94383, type: 3}
+      propertyPath: AccelerationMaxStamina
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061418411194651532, guid: f733d6309fb3aa64883348ba4ad94383, type: 3}
+      propertyPath: SpiderMaxSuperSpeedTime
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1061418411194651533, guid: f733d6309fb3aa64883348ba4ad94383, type: 3}
       propertyPath: m_RootOrder
