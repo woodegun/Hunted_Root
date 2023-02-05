@@ -92039,6 +92039,46 @@ PrefabInstance:
       propertyPath: m_Name
       value: WinCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 1737754765981406745, guid: fa130be57a724de4bbaae07e896930b3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2788231036815494994, guid: fa130be57a724de4bbaae07e896930b3, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 50ccb445d5d2bec428f10217596c9ce3, type: 3}
+    - target: {fileID: 5851995347683165109, guid: fa130be57a724de4bbaae07e896930b3, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851995347683165109, guid: fa130be57a724de4bbaae07e896930b3, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851995347683165109, guid: fa130be57a724de4bbaae07e896930b3, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851995347683165109, guid: fa130be57a724de4bbaae07e896930b3, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851995347683165109, guid: fa130be57a724de4bbaae07e896930b3, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 462.6285
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851995347683165109, guid: fa130be57a724de4bbaae07e896930b3, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 268.2971
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851995347683165109, guid: fa130be57a724de4bbaae07e896930b3, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 4.879
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851995347683165109, guid: fa130be57a724de4bbaae07e896930b3, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 12.4152
+      objectReference: {fileID: 0}
     - target: {fileID: 8305930652448259989, guid: fa130be57a724de4bbaae07e896930b3, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -92125,7 +92165,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8556536812374446036, guid: fa130be57a724de4bbaae07e896930b3, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8879915649642829236, guid: fa130be57a724de4bbaae07e896930b3, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size

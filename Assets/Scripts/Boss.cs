@@ -194,8 +194,7 @@ public class Boss : MonoBehaviour
         if (RootsSpawnPoints == null || RootsSpawnPoints.Count == 0)
             return;
         var spawnPoint = RootsSpawnPoints[Random.Range(0, RootsSpawnPoints.Count - 1)];
-        var root = Instantiate(Roots, new Vector3(0, 3.3f, 0), Quaternion.identity);
-        root.transform.SetParent(spawnPoint.transform);
+        Instantiate(Roots, spawnPoint.transform);
         RootsSpawnPoints.Remove(spawnPoint);
     }
 
