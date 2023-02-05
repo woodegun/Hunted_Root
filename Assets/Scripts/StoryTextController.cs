@@ -9,7 +9,7 @@ public class StoryTextController : MonoBehaviour
     public bool isStarted = false;
 
 
-    private void Start()
+    private void Awake()
     {
         _textMeshPro = GetComponent<TextMeshProUGUI>();
     }

@@ -15,6 +15,18 @@ public class StoryController : MonoBehaviour
     [SerializeField] private StoryTextController text3;
     [SerializeField] private GameObject image4;
     [SerializeField] private StoryTextController text4;
+    
+    [SerializeField] private GameObject panel3;
+    [SerializeField] private GameObject image5;
+    [SerializeField] private StoryTextController text5;
+    [SerializeField] private GameObject image6;
+    [SerializeField] private StoryTextController text6;
+    
+    [SerializeField] private GameObject panel4;
+    [SerializeField] private GameObject image7;
+    [SerializeField] private StoryTextController text7;
+    [SerializeField] private GameObject image8;
+    [SerializeField] private StoryTextController text8;
     private void Start()
     {
         panel1.SetActive(false);
@@ -27,6 +39,16 @@ public class StoryController : MonoBehaviour
         text3.gameObject.SetActive(false);
         image4.SetActive(false);
         text4.gameObject.SetActive(false);
+        panel3.SetActive(false);
+        image5.SetActive(false);
+        text5.gameObject.SetActive(false);
+        image6.SetActive(false);
+        text6.gameObject.SetActive(false);
+        panel4.SetActive(false);
+        image7.SetActive(false);
+        text7.gameObject.SetActive(false);
+        image8.SetActive(false);
+        text8.gameObject.SetActive(false);
     }
 
     private void Skip()
@@ -65,6 +87,39 @@ public class StoryController : MonoBehaviour
         {
             PrintPart(image4, text4);
             return;
+        }
+        
+        if (text4.isFinish && !text5.isStarted)
+        {
+            panel3.SetActive(true);
+            panel2.SetActive(false);
+            PrintPart(image5, text5);
+            return;
+        }
+        
+        if (text5.isFinish && !text6.isStarted)
+        {
+            PrintPart(image6, text6);
+            return;
+        }
+        
+        if (text6.isFinish && !text7.isStarted)
+        {
+            panel4.SetActive(true);
+            panel3.SetActive(false);
+            PrintPart(image7, text7);
+            return;
+        }
+        
+        if (text5.isFinish && !text6.isStarted)
+        {
+            PrintPart(image8, text8);
+            return;
+        }
+
+        if (text6.isFinish)
+        {
+            Invoke("Skip", 10);
         }
     }
 
