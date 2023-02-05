@@ -111,13 +111,13 @@ public class StoryController : MonoBehaviour
             return;
         }
         
-        if (text5.isFinish && !text6.isStarted)
+        if (text7.isFinish && !text8.isStarted)
         {
             PrintPart(image8, text8);
             return;
         }
 
-        if (text6.isFinish)
+        if (text8.isFinish)
         {
             Invoke("Skip", 10);
         }
