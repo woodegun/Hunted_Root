@@ -29,6 +29,7 @@ public class Web : MonoBehaviour
         var player = other.GetComponent<PlayerController>();
         if (player != null)
         {
+            Debug.Log("Попался");
             player.DecreaseSpeed();
             return;
         }

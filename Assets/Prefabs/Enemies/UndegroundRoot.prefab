@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2132653972099029942}
   - component: {fileID: 4861435747105584163}
-  - component: {fileID: 4653801980565594501}
+  - component: {fileID: 3403598426719782323}
   m_Layer: 0
   m_Name: UndegroundRoot
   m_TagString: Untagged
@@ -48,7 +48,7 @@ CapsuleCollider:
   m_Height: 9.09
   m_Direction: 1
   m_Center: {x: 0, y: 4, z: 0}
---- !u!114 &4653801980565594501
+--- !u!114 &3403598426719782323
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -57,9 +57,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 2166348321838886336}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1948ea6a826748c49f1b2dd42a32d72a, type: 3}
+  m_Script: {fileID: 11500000, guid: 6ec098713d004f7da77929339a60c186, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  createRootsMinTimer: 5
+  createRootsMaxTimer: 10
+  rootsStayMinTimer: 2
+  rootsStayMaxTimer: 4
+  _animator: {fileID: 6842925393610257591}
 --- !u!1001 &524409319012676947
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -120,5 +125,10 @@ PrefabInstance:
 --- !u!4 &3412072041732840984 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2890481992944626507, guid: d4030478461da764495bf89140e7532b, type: 3}
+  m_PrefabInstance: {fileID: 524409319012676947}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &6842925393610257591 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6463201050215317988, guid: d4030478461da764495bf89140e7532b, type: 3}
   m_PrefabInstance: {fileID: 524409319012676947}
   m_PrefabAsset: {fileID: 0}

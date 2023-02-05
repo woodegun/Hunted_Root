@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -21,10 +19,12 @@ public class FlowerTurret : MonoBehaviour
         ActiveFlower.SetActive(false);
         //turret = GetComponent<Turret>();
     }
+
     private void OnTriggerEnter(Collider other)
     {
         Player = other.GetComponent<PlayerController>();
-        Player.ShowHint(hint);
+        if (Player != null)
+            Player.ShowHint(hint);
     }
 
     private void Update()
@@ -51,21 +51,24 @@ public class FlowerTurret : MonoBehaviour
             {
                 enemy.Scare();
             }
+
             curReloadTime = reloadTime;
             //turret.player.DoDigOut();
         }
     }
+
     private void Reload()
     {
         if (curReloadTime > 0)
         {
             curReloadTime -= Time.deltaTime;
         }
-        if (curReloadTime <= 0) 
+
+        if (curReloadTime <= 0)
         {
             UnactiveFlower.SetActive(true);
             ActiveFlower.SetActive(false);
-            curReloadTime = 0; 
+            curReloadTime = 0;
         }
     }
 

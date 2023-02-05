@@ -8,6 +8,8 @@ public class GlobalSettings : MonoBehaviour
     public float AccelerationMaxSpeed = 4;
     public float AccelerationMaxStamina = 5;
     public float DigInKdMax = 20;
+    public float PlayerMaxDecreasedSpeedTime = 5;
+    public float PlayerMaxDecreasedSpeed = 5;
 
     [Header("Skeleton")] 
     public float MaxFearTime = 15f;
@@ -26,7 +28,11 @@ public class GlobalSettings : MonoBehaviour
 
     [Header("Web")] public float WebLiveTime = 1500f;
 
-    [Header("Roots")] public float CreateRootsMaxTimer = 2;
+    [Header("Roots")] 
+    public float CreateRootsMinTimer = 10;
+    public float CreateRootsMaxTimer = 30;
+    public float RootsStayMinTimer = 2;
+    public float RootsStayMaxTimer = 5;
 
     [Header("Boss")] public float ShootRate1Phase = 8;
     public float ShootRate2Phase = 7;

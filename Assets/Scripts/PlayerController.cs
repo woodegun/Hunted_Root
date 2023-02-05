@@ -49,6 +49,8 @@ public class PlayerController : MonoBehaviour
         AccelerationMaxSpeed = GlobalSettings.INSTANSE.AccelerationMaxSpeed;
         AccelerationMaxStamina = GlobalSettings.INSTANSE.AccelerationMaxStamina;
         DigInKdMax = GlobalSettings.INSTANSE.DigInKdMax;
+        maxDecreasedSpeedTime = GlobalSettings.INSTANSE.PlayerMaxDecreasedSpeedTime;
+        maxDecreasedSpeed = GlobalSettings.INSTANSE.PlayerMaxDecreasedSpeed;
 
         _textController = GetComponent<TextController>();
         _controller = gameObject.GetComponent<CharacterController>();
