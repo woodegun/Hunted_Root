@@ -53,7 +53,7 @@ public class StoryController : MonoBehaviour
 
     private void Skip()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
 
     private void FixedUpdate()

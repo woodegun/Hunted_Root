@@ -40,6 +40,7 @@ public class PlayerController : MonoBehaviour
 
     public GameObject DiePanel;
     public TextMeshProUGUI RestartBtnText;
+    public TextMeshProUGUI ExitBtnText;
     private Image diePanelImage;
     private TextController _textController;
 
@@ -174,9 +175,9 @@ public class PlayerController : MonoBehaviour
 
     private void UpdateDiePanel()
     {
-        if (diePanelImage == null || RestartBtnText == null)
+        if (diePanelImage == null || RestartBtnText == null || ExitBtnText == null)
         {
-            Debug.LogWarning("Запони diePanelImage & RestartBtnText");
+            Debug.LogWarning("Запони diePanelImage & RestartBtnText & ExitBtnText");
             return;
         }
 
@@ -188,6 +189,7 @@ public class PlayerController : MonoBehaviour
             color = RestartBtnText.color;
             color.a += Time.deltaTime;
             RestartBtnText.color = color;
+            ExitBtnText.color = color;
         }
     }
 
