@@ -10,6 +10,7 @@ public class Boss : MonoBehaviour
     private float maxHP;
 
     private Transform _player;
+    public Transform Head;
 
     [SerializeField] private List<Transform> SpawnPoints;
     [SerializeField] private List<Transform> RootsSpawnPoints;
@@ -59,7 +60,7 @@ public class Boss : MonoBehaviour
 
     private void FixedUpdate()
     {
-        transform.LookAt(_player);
+        Head.transform.LookAt(_player);
         SpawnTimer();
         PhaseUpdate();
         Shoot();
