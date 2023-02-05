@@ -70,3 +70,4 @@ MonoBehaviour:
   settings:
     renderPassEvent: 550
     screenHeight: 144
+    mat: {fileID: 2100000, guid: d632cda0eb2b58347bccefa397c9eb84, type: 2}
