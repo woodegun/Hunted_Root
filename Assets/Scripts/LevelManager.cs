@@ -7,7 +7,11 @@ public class LevelManager : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
-
+    
+    public void LoadStoryLevel()
+    {
+        SceneManager.LoadScene(1);
+    }
     public void LoadLevel1()
     {
         SceneManager.LoadScene(2);
