@@ -13,6 +13,7 @@ public class FlowerTurret : MonoBehaviour
     public GameObject ActiveFlower;
 
     //private Turret turret;
+    private string hint = "Use the mouse to interact";
 
     private void Start()
     {
@@ -23,6 +24,7 @@ public class FlowerTurret : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Player = other.GetComponent<PlayerController>();
+        Player.ShowHint(hint);
     }
 
     private void Update()

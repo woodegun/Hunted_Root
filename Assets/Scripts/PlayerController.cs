@@ -41,6 +41,7 @@ public class PlayerController : MonoBehaviour
     public GameObject DiePanel;
     public TextMeshProUGUI RestartBtnText;
     private Image diePanelImage;
+    private TextController _textController;
 
     private void Start()
     {
@@ -49,6 +50,7 @@ public class PlayerController : MonoBehaviour
         AccelerationMaxStamina = GlobalSettings.INSTANSE.AccelerationMaxStamina;
         DigInKdMax = GlobalSettings.INSTANSE.DigInKdMax;
 
+        _textController = GetComponent<TextController>();
         _controller = gameObject.GetComponent<CharacterController>();
         _camera = FindObjectOfType<Camera>().transform;
         if (DiePanel != null) diePanelImage = DiePanel.GetComponent<Image>();
@@ -210,5 +212,10 @@ public class PlayerController : MonoBehaviour
                 curDecreasedSpeed = 0;
             }
         }
+    }
+
+    public void ShowHint(string hint)
+    {
+        _textController.ShowText(hint);
     }
 }

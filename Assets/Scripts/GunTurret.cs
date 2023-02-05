@@ -31,6 +31,8 @@ public class GunTurret : MonoBehaviour
     private Turret Turret;
 
     public bool allowInvoke;
+    
+    private string hint = "Use Space and mouse to interact";
 
     private void Awake()
     {
@@ -135,5 +137,12 @@ public class GunTurret : MonoBehaviour
         Turret.DoDigOut();
         TurretSpawner.INSTANT.SpawnNext();
         Destroy(gameObject); 
+    }
+    
+    private void OnTriggerEnter(Collider other)
+    {
+        var player = other.GetComponent<PlayerController>();
+        if (player)
+            player.ShowHint(hint);
     }
 }

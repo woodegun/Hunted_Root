@@ -9,10 +9,18 @@ public class BridgeTurret : MonoBehaviour
     private float scaleStep = 0.1f;
     private float carScale = 0;
 
+    private string hint = "Use Space and mouse to interact";
 
     private void Start()
     {
         Turret = GetComponent<Turret>();
+    }
+    
+    private void OnTriggerEnter(Collider other)
+    {
+        var player = other.GetComponent<PlayerController>();
+        if (player)
+            player.ShowHint(hint);
     }
 
     private void Update()
